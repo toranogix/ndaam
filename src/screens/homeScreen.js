@@ -2,12 +2,16 @@
 // Description: Home screen for the app
 
 import React from 'react';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, Image, ImageBackground, StyleSheet, Text } from 'react-native';
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Acceuil</Text>
+      <Image source={"./assets/texte_logo_ndam.png"} style={styles.logoNdam}/>
+      <Text style={styles.textHome2}>COLLECTION</Text>
+      <Text style={styles.textHome2}>L'ELEGANCE AFRICAINE REINVENTEE</Text>
+
+
     </View>
   );
 };
@@ -19,13 +23,28 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white', // Ajout de la couleur de fond
+    backgroundColor: 'white', 
   },
 
-  text: {
-    fontSize: 20,
-    color: 'black',
-    fontWeight: 'bold',
+  logoNdam: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    resizeMode: 20,
+  },
+
+  textHome1: {
+    fontFamily: 'Trebuchet MS',
+    fontSize: 100,
+    fontWeight: '900', // Extra bold
+    color: '#4C4F2C',
+  },
+
+  textHome2: {
+    fontFamily: 'Trebuchet MS',
+    fontSize: 15,
+    fontWeight: '900', // Extra bold
+    color: '#4C4F2C',
   },
 
 });
