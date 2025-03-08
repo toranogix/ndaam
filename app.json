@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "ndam",
+    "slug": "ndam",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/texte_logo_ndam.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/texte_logo_ndam.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/texte_logo_ndam.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.anonymous.ndam"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"  
+    }
+  }
+}
