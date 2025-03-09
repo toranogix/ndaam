@@ -1,0 +1,264 @@
+// Date: 08/03/2025
+// Description: Home screen for the app
+
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Image, ImageBackground, StyleSheet, Text, Animated, ScrollView} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+// import { NavigationContainer } from '@react-navigation/native';
+import logo from "../../assets/texte_logo_ndam.png";
+import imageBackground1 from "../../assets/image_homescreen.png";
+import imageBackground2 from "../../assets/image_homescreen2.png";
+
+const HomeScreen = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [imageBackground1, imageBackground2];
+
+  // Vertical transition
+  const translateY = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Reset the value so that the image starts off-screen from the top
+      translateY.setValue(-300); // 300 ==> height of the container
+
+      // Update the image
+      setCurrentImage(prevImage => (prevImage + 1) % images.length);
+
+      // Animation
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration: 600,
+        useNativeDriver: true,
+      }).start();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [translateY]);
+
+  return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+          {/* Logo */}
+          <Image source={logo} style={styles.logoNdam} resizeMode="contain" />
+
+
+        <ScrollView vertical showsVerticalScrollIndicator= {false} contentContainerStyle={{ alignItems: 'center' }}>
+          {/* Texts */}
+          <Text className="font-made-saonara text-4xl text-gray-800">COLLECTION </Text>
+          <Text className="font-made-saonara text-sm mb-12 text-gray-600"> L'ELEGANCE AFRICAINE REINVENTEE </Text>
+
+          {/* Images */}
+          <View style={styles.imageContainer}>
+            <Animated.View style={[styles.animatedContainer, { transform: [{ translateY }] }]}>
+              <ImageBackground 
+                source={images[currentImage]} 
+                style={styles.backgroundImage}
+              />
+            </Animated.View>
+          </View>
+
+          {/* History of NDAAM */}
+          <View className="w-full px-4 py-8 bg-white mt-40">
+            <Text className="font-made-saonara text-xl text-gray-800 mt-12 text-center">
+              Notre Histoire
+            </Text>
+            <Text className="font-made-saonara text-sm text-black-600 text-center mt-4">
+              NDAAM est bien plus qu'une marque de mode : c'est une rencontre entre héritage et modernité, une célébration du savoir-faire africain revisité pour une élégance intemporelle.
+            </Text>
+            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              Inspirée des traditions artisanales du continent, NDAAM crée des pièces uniques qui mêlent techniques ancestrales et design contemporain. Chaque collection est une invitation à découvrir l'histoire et la richesse culturelle de l'Afrique, à travers des créations qui allient authenticité et innovations contemporaines.
+            </Text>
+            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              Chaque création porte en elle une histoire, un fragment d'identité qui transcende les tendances pour offrir un style authentique et affirmé.
+            </Text>
+            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              Son nom vient du village de NDAAM LO, en plein coeur du Sénégal dans la région de Thiès, un lieu chargé de sens qui incarne les valeurs de la marque : transmission, excellence et fierté culturelle.
+            </Text>
+            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              Chez NDAAM, nous croyons que la mode doit avoir du sens. C'est pourquoi nous avons fait le choix d'une production sur mesure qui limite le gaspillage et valorise une consommation plus réfléchie.
+            </Text>
+            
+          </View>
+
+          {/* Copyrights */}
+          <View style={styles.copyRights}>
+            <Text className="font-made-saonara text-sm text-black-600 mt-20"> © 2025 NDAAM. Tous droits réservés. </Text>        
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+  );
+};
+
+// Styles
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white', 
+  },
+  logoNdam: {
+    width: 250,
+    height: 100,
+    resizeMode: 'contain',
+    marginTop: 100,
+    marginBottom: 20,
+  },
+
+  imageContainer: {
+    width: 288,
+    height: 400, 
+    borderWidth: 0.25, 
+    borderColor: '#E5E7EB',
+    borderRadius: 0.5, 
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2.65,
+    elevation: 3, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    overflow: 'hidden', 
+
+  },
+  animatedContainer: {  // Animated view
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+  },
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+
+  copyRights: {
+    width: '100%',
+    height: 100,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 50,
+  },
+});
+
+export default HomeScreen;
+
+
+
+
+
+
+===============================================================================================================================================
+
+
+// SearchScreen.js
+// Screen for searching products
+
+import React from 'react';
+import {View, Text, TextInput, ScrollView, TouchableOpacity, Image} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+// Categories
+const categories = ['FEMME', 'HOMME'];
+
+// Recommended items ===> CHANGE LATER !!!!
+const recommendedItems = [
+    {
+        id: 1,
+        nom: "SALY",
+        prix: "75 EUR",
+        titre: "Ensemble short et t-shirt",
+        coupe: "Coupe droite",
+        col: "Col en V",
+        couleur: "Blanc et multicolore",
+        tissu: "Coton premium et wax traditionnel",
+        image: require('../../assets/man/collection_afro_summer/catalog_afro_summer2.png')
+   
+    },
+
+    {
+        id: 2,
+        nom: "DIAMALAYE",
+        prix: "75 EUR",
+        titre: "Ensemble chemise et short",
+        coupe: "Coupe droite",
+        col: "Chemise classique avec détails en wax",
+        couleur: "Blanc et multicolore",
+        tissu: "Coton premium et wax traditionnel",
+        image: require('../../assets/man/collection_afro_summer/catalog_diamalaye.png')
+    },
+
+    {
+        id: 3,
+        nom: "MEDINA",
+        prix: "75 EUR",
+        titre: "Ensemble short et débardeur",
+        coupe: "Coupe droite",
+        col: "Col rond",
+        couleur: "Blanc et multicolore",
+        tissu: "Wax et coton",
+        image: require('../../assets/man/collection_afro_summer/catalog_medina.png') // ===> use require() to load images from local files
+          
+    },
+
+];
+
+const SearchScreen = () => {
+return (
+    <SafeAreaView className="flex-1 bg-black">
+
+      {/* Categories tab */}
+      <View className="flex-row justify-left mt-20 mb-7">
+        {categories.map((cat) => (
+          <TouchableOpacity key={cat} onPress={() => console.log(cat + " cliqué")}>
+            <Text className="font-made-saonara text-white uppercase text-sm space-x-4 mx-2"> {cat} </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Content */}
+      <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
+        
+        {/* SearchBar */}
+        <View className="flex-row items-center border-b border-gray-600 mt-20 mx-4 pb-2">
+            <Ionicons name="search-outline" size={20} color="white" />
+            <TextInput
+            placeholder="QUE RECHERCHEZ-VOUS ?"
+            placeholderTextColor="#666"
+            className="flex-1 ml-2 text-white font-made-saonara text-center text-sm"
+        />
+        </View>
+
+        {/* Recommandation section */}
+        <Text className="font-made-saonara text-gray-300 text-left text-sm uppercase mt-32 mb-4"> VOUS POURRIEZ ÊTRE INTÉRESSÉ PAR </Text>
+
+        {/* List recommended items */}
+        <ScrollView vertical showsVerticalScrollIndicator={false} className="px-6" >
+
+            {/* Mapping recommended items */}
+            <View className="flex-row flex-wrap justify-between">
+                {recommendedItems.map((item) => (
+                    <View key={item.id} className="w-1/2 p-2">
+                        <Image source={item.image} className="w-full h-72" resizeMode="cover" />
+                        <Text className="font-made-saonara text-white text-xs text-center mt-2">
+                            {item.nom}
+                        </Text>
+                        <Text className="font-made-saonara text-white text-xs text-center">
+                            {item.titre}
+                        </Text>
+                        <Text className="font-made-saonara text-white text-xs text-center">
+                            {item.prix}
+                        </Text>
+                    </View>
+                ))}
+            </View>
+        </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+export default SearchScreen;
+
+

@@ -24,7 +24,10 @@
       "package": "com.anonymous.ndam"
     },
     "web": {
-      "favicon": "./assets/texte_logo_ndam.png"
-    }
+      "favicon": "./assets/texte_logo_ndam.png",
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
