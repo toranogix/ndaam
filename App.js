@@ -38,8 +38,12 @@ export default function App() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: '#4C4F2C',
+          tabBarActiveTintColor: '#4C4F2C', // color green when active
           tabBarInactiveTintColor: 'gray',
+          tabBarStyle: {
+            backgroundColor: 'black',
+            borderTopColor: 'transparent',
+          },
           headerShown: false, // hide header
         })}
       >

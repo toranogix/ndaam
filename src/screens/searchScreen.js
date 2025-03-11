@@ -44,6 +44,39 @@ const recommendedItems = [
     tissu: "Wax et coton",
     image: require('../../assets/man/collection_afro_summer/catalog_medina.png')
   },
+  {
+    id: 4,
+    nom: "NIAYE",
+    prix: "75 EUR",
+    titre: "Ensemble débardeur et short",
+    coupe: "Coupe droite",
+    col: "Col rond classique avec détails en wax",
+    couleur: "Bleu pétrole et vert",
+    tissu: "Coton et wax traditionnel",
+    image: require('../../assets/man/collection_afro_summer/catalog_niaye1.png')
+  },
+  {
+    id: 5,
+    nom: "WEDDING",
+    prix: "120 EUR",
+    titre: "Ensemble spencer croisé",
+    coupe: "Coupe slim fit",
+    col: "Col Mao pochette en fleurette",
+    couleur: "Bleu acier",
+    tissu: "Fil à fil huilé",
+    image: require('../../assets/man/collection_winter/catalog_winter1.png')
+  },
+  {
+    id: 6,
+    nom: "EL PROFESSOR",
+    prix: "120 EUR",
+    titre: "Ensemble spencer et pantalon",
+    coupe: "Coupe Regular fit",
+    col: "Col Mao",
+    couleur: "Beige clair",
+    tissu: "Fil à fil huilé",
+    image: require('../../assets/man/collection_winter/catalog_elprofessor1.png')
+  },
 ];
 
 const SearchScreen = () => {
