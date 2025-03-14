@@ -2,9 +2,11 @@
 // Screen for searching products
 
 import React, { useRef } from 'react';
-import { Animated, View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { Animated, View, Text, TextInput, TouchableOpacity, Image, Touchable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+import { useBasket } from '../context/BasketContext';
 
 // Categories
 const categories = ['FEMME', 'HOMME'];
@@ -83,11 +85,30 @@ const SearchScreen = () => {
   // Animated value for scroll
   const scrollY = useRef(new Animated.Value(0)).current;
 
+  const navigation = useNavigation();
+  const { addToBasket, basketItems } = useBasket();
+
+  const handleAddToBasket = (item) => {
+    const basketItem = {
+      id: item.id,
+      nom: item.nom,
+      prix: item.prix,
+      titre: item.titre,
+      images: item.image
+    };
+    
+    addToBasket(basketItem);
+    
+    // Afficher un retour visuel (vous pouvez ajouter une animation ou un toast ici)
+    console.log('Ajouté au panier:', item.nom);
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-black">
         {/* Categories tab */}
-        <View className="absolute top-32 left-0 right-0 px-2 z-10 bg-transparent flex-row justify-start">
+        <View className="absolute top-28 left-0 right-0 px-2 z-10 bg-transparent flex-row justify-start">
           {categories.map((cat) => (
+            
             <TouchableOpacity key={cat} onPress={() => console.log(cat + " cliqué")}>
               <Text className="font-made-saonara text-white font-light uppercase text-sm mx-3">
                 {cat}
@@ -122,20 +143,39 @@ const SearchScreen = () => {
 
             {/* Mapping recommended items */}
             <View className="flex-row flex-wrap justify-between px-4">
-            {recommendedItems.map((item) => (
+              {recommendedItems.map((item) => (
                 <View key={item.id} className="w-1/2 p-2">
-                <Image source={item.image} className="w-full h-72" resizeMode="cover" />
-                <Text className="font-made-saonara text-white text-xs text-center mt-2 mb-1">
-                    {item.nom}
-                </Text>
-                <Text className="font-made-saonara text-white text-xs text-center mb-1">
-                    {item.titre}
-                </Text>
-                <Text className="font-made-saonara text-white text-xs text-center mb-1">
-                    {item.prix}
-                </Text>
+                  <TouchableOpacity onPress={() => navigation.navigate('ProductDetails', {item})}>
+                    <View className="relative">
+                      <Image source={item.image} className="w-full h-72" resizeMode="cover" />
+                      <TouchableOpacity 
+                        className="absolute bottom-2 right-2"
+                        onPress={() => handleAddToBasket(item)}
+                      >
+                        <View className="flex-row items-center bg-white rounded-full px-3 py-2">
+                          <Ionicons 
+                            name="cart" 
+                            size={15} 
+                            color="black"
+                          />
+                          {basketItems.find(i => i.id === item.id) && (
+                            <Text className="ml-1 text-black text-xs">
+                              {basketItems.find(i => i.id === item.id).quantity}
+                            </Text>
+                          )}
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+                    <Text className="font-made-saonara text-white text-xs text-center mt-2 mb-1">
+                      {item.nom}
+                    </Text>
+                    <Text className="font-made-saonara text-white text-xs text-center mb-1">
+                      {item.prix}
+                    </Text>
+                  </TouchableOpacity>
                 </View>
-            ))}
+              ))}
+              
             </View>
         </Animated.ScrollView>
     </SafeAreaView>

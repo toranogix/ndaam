@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 100,
   },
 });
 

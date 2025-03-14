@@ -4,8 +4,10 @@ import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 
 const ProfileScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Profil</Text>
+    <SafeAreaView className="flex-1 bg-black">
+      <View className="flex-1">
+        <Text className="text-white">Profil</Text>
+      </View>
     </SafeAreaView>
   );
 };
