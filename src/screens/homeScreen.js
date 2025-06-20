@@ -1,10 +1,11 @@
 // HomeScreen.js
-// Description: Home screen for the app
+
 
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Image, ImageBackground, StyleSheet, Text, Animated, ScrollView } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import logo from "../../assets/texte_logo_ndam.png";
+import logo from "../../assets/logo_ndam2.png";
 import imageBackground1 from "../../assets/image_homescreen.png";
 import imageBackground2 from "../../assets/image_homescreen2.png";
 
@@ -36,7 +37,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={{ flex: 1 }}>
-        {/* Logo overlay with transparency */}
+        {/* Logo */}
         <Image source={logo} style={styles.logoOverlay} resizeMode="contain" />
 
         {/* Content scrollable */}
@@ -45,7 +46,7 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator={false}
         >
           {/* Texts */}
-          <Text className="font-made-saonara text-4xl text-gray-800 font-semibold"> COLLECTION</Text>
+          <Text className="font-made-saonara text-4xl text-gray-800 font-semibold mt-20"> COLLECTION</Text>
           <Text className="font-made-saonara text-sm mb-12 text-gray-600">L'ELEGANCE AFRICAINE REINVENTEE</Text>
 
           {/* Images */}
@@ -59,26 +60,31 @@ const HomeScreen = () => {
           </View>
 
           {/* History of NDAAM */}
-          <View className="w-full px-4 py-8 bg-white mt-40">
-            <Text className="font-made-saonara text-xl text-gray-800 font-semibold mt-12 text-center">
-              Notre Histoire
-            </Text>
-            <Text className="font-made-saonara text-sm text-black-600 text-center mt-4">
-              NDAAM est bien plus qu'une marque de mode : c'est une rencontre entre héritage et modernité, une célébration du savoir-faire africain revisité pour une élégance intemporelle.
-            </Text>
-            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
-              Inspirée des traditions artisanales du continent, NDAAM crée des pièces uniques qui mêlent techniques ancestrales et design contemporain. Chaque collection est une invitation à découvrir l'histoire et la richesse culturelle de l'Afrique, à travers des créations qui allient authenticité et innovations contemporaines.
-            </Text>
-            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
-              Chaque création porte en elle une histoire, un fragment d'identité qui transcende les tendances pour offrir un style authentique et affirmé.
-            </Text>
-            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
-              Son nom vient du village de NDAAM LO, en plein coeur du Sénégal dans la région de Thiès, un lieu chargé de sens qui incarne les valeurs de la marque : transmission, excellence et fierté culturelle.
-            </Text>
-            <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
-              Chez NDAAM, nous croyons que la mode doit avoir du sens. C'est pourquoi nous avons fait le choix d'une production sur mesure qui limite le gaspillage et valorise une consommation plus réfléchie.
-            </Text>
-          </View>
+          <Animatable.View
+            animation = "fadeInUp"
+            duration={1500}
+            style={{ marginTop: 500 }}
+            className="w-full px-4 py-8 bg-white"
+            >
+              <Text className="font-made-saonara text-xl text-gray-800 font-semibold mt-12 text-center">
+                Notre Histoire
+              </Text>
+              <Text className="font-made-saonara text-sm text-black-600 text-center mt-4">
+                NDAAM est bien plus qu'une marque de mode : c'est une rencontre entre héritage et modernité, une célébration du savoir-faire africain revisité pour une élégance intemporelle.
+              </Text>
+              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+                Inspirée des traditions artisanales du continent, NDAAM crée des pièces uniques qui mêlent techniques ancestrales et design contemporain. Chaque collection est une invitation à découvrir l'histoire et la richesse culturelle de l'Afrique, à travers des créations qui allient authenticité et innovations contemporaines.
+              </Text>
+              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+                Chaque création porte en elle une histoire, un fragment d'identité qui transcende les tendances pour offrir un style authentique et affirmé.
+              </Text>
+              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+                Son nom vient du village de NDAAM LO, en plein coeur du Sénégal dans la région de Thiès, un lieu chargé de sens qui incarne les valeurs de la marque : transmission, excellence et fierté culturelle.
+              </Text>
+              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+                Chez NDAAM, nous croyons que la mode doit avoir du sens. C'est pourquoi nous avons fait le choix d'une production sur mesure qui limite le gaspillage et valorise une consommation plus réfléchie.
+              </Text>
+          </Animatable.View>
 
           {/* Copyrights */}
           <View style={styles.copyRights}>
@@ -98,8 +104,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     width: '100%',
-    height: 70, 
-    opacity: 0.7, 
+    height: 120,
     zIndex: 20,
   },
   imageContainer: {
@@ -133,7 +138,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 600,
   },
 });
 

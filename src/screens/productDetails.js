@@ -40,16 +40,31 @@ const ProductDetails = ({ route, navigation }) => {
 
       {/* Scrollable content */}
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 80 }}
+        contentContainerStyle={{ paddingBottom: 50 }}
         showsVerticalScrollIndicator={false}
       >
         {/* Product image */}
-        <View className="items-center mt-12">
-          <Image
-            source={item.image}
-            style={{ width: 450, height: 550, marginLeft: 50, marginRight: 50}}
-            resizeMode="contain"
-          />
+        <View className="flex-1 mt-12 justify-center items-center">
+          {typeof item.images === 'object' ? (
+
+            // If multiple images
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}>
+              {Object.values(item.images).map((img, index) => (
+                <Image
+                  key={index}
+                  source={img}
+                  style={{ width: 385, height: 550, marginRight: 5, marginLeft: 5 }}
+                  resizeMode="contain"
+                />
+              ))}
+            </ScrollView>
+          ) : (  // If single image
+            <Image
+              source={item.images}
+              style={{ width: 400, height: 550, marginRight: 5, marginLeft: 5 }}
+              resizeMode = "contain"
+            />
+          )}
         </View>
 
         {/* Product details */}
@@ -75,7 +90,7 @@ const ProductDetails = ({ route, navigation }) => {
           {/* Ajouter button */}
           <TouchableOpacity
             className="bg-transparent py-3 items-center justify-center mt-20 border border-gray-400"
-            onPress={() => console.log(item.nom + "added to car")}
+            onPress={() => console.log(item.nom + " ajouté au panier")} // add to cart
           >
             <View className="flex-row items-center">
               <Ionicons name="cart" size={20} color="white" />

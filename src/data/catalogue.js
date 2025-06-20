@@ -1,8 +1,8 @@
 
-export const catalogue = [
+export const catalogueMan = [
     {
       id: 1,
-      nom: "Saly",
+      nom: "SALY",
       prix: "75 EURO",
       titre: "Ensemble short et t-shirt",
       coupe: "Coupe droite",
@@ -10,8 +10,8 @@ export const catalogue = [
       couleur: "Blanc et multicolore",
       tissu: "Coton premium et wax traditionnel",
       images: {
-        img1:"../assets/man/collection_afro_summer/catalog_saly.png",
-        img2:"../assets/man/collection_afro_summer/catalog_afro_summer2.png"
+        img1: require('../../assets/man/collection_afro_summer/catalog_saly.png'),
+        img2: require('../../assets/man/collection_afro_summer/catalog_afro_summer2.png')
           }
     },
 
@@ -24,7 +24,9 @@ export const catalogue = [
       col: "Chemise classique avec détails en wax",
       couleur: "Blanc et multicolore",
       tissu: "Coton premium et wax traditionnel",
-      images: "../assets/man/collection_afro_summer/catalog_diamalaye.png" 
+      images: {
+        img1: require('../../assets/man/collection_afro_summer/catalog_diamalaye.png')
+      } 
     },
 
     {
@@ -36,7 +38,9 @@ export const catalogue = [
         col: "Col rond",
         couleur: "Blanc et multicolore",
         tissu: "Wax et coton",
-        images: "../assets/man/collection_afro_summer/catalog_medina.png" 
+        images: {
+            img1:require('../../assets/man/collection_afro_summer/catalog_medina.png')
+        } 
     }, 
 
       {
@@ -49,8 +53,8 @@ export const catalogue = [
         couleur: "Bleue pétrole et vert",
         tissu: "Coton et wax traditionnel",
         images: {
-            img1:"../assets/man/collection_afro_summer/catalog_niaye1.png",
-            img2:"../assets/man/collection_afro_summer/catalog_niaye2.png"
+            img1:require('../../assets/man/collection_afro_summer/catalog_niaye1.png'),
+            img2:require('../../assets/man/collection_afro_summer/catalog_niaye2.png')
             } 
       
 },
@@ -65,8 +69,8 @@ export const catalogue = [
         couleur: "Bleue pétrole et vert",
         tissu: "Coton et wax traditionnel",
         images: {
-            img1:"../assets/man/collection_afro_summer/catalog_niaye1.png",
-            img2:"../assets/man/collection_afro_summer/catalog_niaye2.png"
+            img1:require('../../assets/man/collection_afro_summer/catalog_niaye1.png'),
+            img2:require('../../assets/man/collection_afro_summer/catalog_niaye2.png')
             }   
     }, 
         
@@ -79,7 +83,9 @@ export const catalogue = [
         col: "Col officier",
         couleur: "Marron et motifs dorées",
         tissu: "Coton et wax imprimé",
-        images: "../assets/man/collection_afro_summer/catalog_moda.png" 
+        images: {
+            img1: require('../../assets/man/collection_afro_summer/catalog_moda.png')
+        } 
     },
         
     {
@@ -91,8 +97,9 @@ export const catalogue = [
         col: "Col classique",
         couleur: "Bleu royal avec motifs multicolores",
         tissu: "Coton et wax imprimé",
-        images: "../assets/man/collection_afro_summer/catalog_lamina.png" 
-            
+        images: {
+            img: require('../../assets/man/collection_afro_summer/catalog_lamina.png')
+        }    
 },
         
     {
@@ -104,7 +111,9 @@ export const catalogue = [
         col: "Col officier",
         couleur: "Marron et motifs dorées",
         tissu: "Coton et wax imprimé",
-        images: "../assets/man/collection_afro_summer/catalog_adil.png" 
+        images: {
+            img: require('../../assets/man/collection_afro_summer/catalog_adil.png')
+        } 
     },
     
     {
@@ -116,8 +125,10 @@ export const catalogue = [
         col: "Chemise classique avec détails en wax",
         couleur: "Noir et multicolore",
         tissu: "Coton premium et wax traditionnel",
-        images: "../assets/man/collection_afro_summer/catalog_soumbedioune.png" 
-        },
+        images: {
+            img: require('../../assets/man/collection_afro_summer/catalog_soumbedioune.png')
+        } 
+    },
 
     {
         id: 10,
@@ -128,8 +139,12 @@ export const catalogue = [
         col: "Col officier",
         couleur: "Noir et motifs multicolores",
         tissu: "Coton et wax imprimé",
-        images: "../assets/man/collection_afro_summer/catalog_samba.png" 
-        },
+        images: {
+            img1: require('../../assets/man/collection_afro_summer/catalog_samba1.png'),
+            img2: require('../../assets/man/collection_afro_summer/catalog_samba2.png')
+
+        }   
+    },
 
     {
         id: 11,
@@ -141,9 +156,9 @@ export const catalogue = [
         couleur: "Bleu acier",
         tissu: "Fil à fil huilé",
         images: {
-            img1: "../assets/man/collection_winter/catalog_winter1.png",
-            img2: "../assets/man/collection_winter/catalog_winter2.png",
-            "img3": "../assets/man/collection_winter/catalog_winter3.png"
+            img1: require('../../assets/man/collection_winter/catalog_winter1.png'),
+            img2: require('../../assets/man/collection_winter/catalog_winter2.png'),
+            img3: require('../../assets/man/collection_winter/catalog_winter3.png')
         }
     },
 
@@ -157,8 +172,8 @@ export const catalogue = [
         couleur: "Bleu-vert profond",
         tissu: "Fil à fil huilé",
         images: {
-            img1: "../assets/man/collection_winter/catalog_officier1.png",
-            img2: "../assets/man/collection_winter/catalog_officier2.png"
+            img1: require('../../assets/man/collection_winter/catalog_officier1.png'),
+            img2: require('../../assets/man/collection_winter/catalog_officier2.png')
         }
     },
 
@@ -172,8 +187,8 @@ export const catalogue = [
         couleur: "Bleu sarcelle",
         tissu: "Fil à fil huilé",
         images: {
-            img1: "../assets/man/collection_winter/catalog_spencer1.png",
-            img2: "../assets/man/collection_winter/catalog_pencer2.png"
+            img1: require('../../assets/man/collection_winter/catalog_spencer1.png'),
+            img2: require('../../assets/man/collection_winter/catalog_spencer2.png')
         }
     },
 
@@ -187,8 +202,8 @@ export const catalogue = [
         couleur: "Vert émeraude",
         tissu: "Fil à fil huilé",
         images: {
-            img1: "../assets/man/collection_winter/catalog_urbanset1.png",
-            img2: "../assets/man/collection_winter/catalog_urbanset2.png"
+            img1: require('../../assets/man/collection_winter/catalog_urbanset1.png'),
+            img2: require('../../assets/man/collection_winter/catalog_urbanset2.png')
         }
     },
 
@@ -202,12 +217,12 @@ export const catalogue = [
         couleur: "Beige clair",
         tissu: "Fil à fil huilé",
         images: {
-            img1: "../assets/man/collection_winter/catalog_elprofessor1.png",
-            img2: "../assets/man/collection_winter/catalog_elprofessor2.png"
+            img1: require('../../assets/man/collection_winter/catalog_elprofessor1.png'),
+            img2: require('../../assets/man/collection_winter/catalog_elprofessor2.png')
         }
-    },
-
-
+    }
+]
+export const catalogueWomen = [
     {
         id: 16,
         nom: "ANITA",
@@ -219,8 +234,8 @@ export const catalogue = [
         couleur: "Marron profond avec imprimé floral multicolore",
         tissu: "coton et wax imprimé floral multicolore",
         images: {
-            img1: "../assets/women/catalog_anita1.png",
-            img2: "../assets/women/catalog_anita2.png"
+            img1: require('../../assets/women/catalog_anita1.png'),
+            img2: require('../../assets/women/catalog_anita2.png')
         }
     },
 
@@ -236,8 +251,8 @@ export const catalogue = [
         couleur: "Blanc avec broderies florales bleu et doré",
         tissu: "Coton brodé",
         images: {
-            img1: "../assets/women/catalog_juliette1.png",
-            img2: "../assets/women/catalog_juliette2.png"
+            img1: require('../../assets/women/catalog_juliette1.png'),
+            img2: require('../../assets/women/catalog_juliette2.png')
         }
     },
 
@@ -253,8 +268,8 @@ export const catalogue = [
         couleur: "Couleur blanc avec imprimé floral exotiqueé",
         tissu: "Tissu en coton et wax imprimé floral multicolore",
         images: {
-            img1: "../assets/women/catalog_maina1.png",
-            img2: "../assets/women/catalog_maina2.png"
+            img1: require('../../assets/women/catalog_maina1.png'),
+            img2: require('../../assets/women/catalog_maina2.png')
         }
     },
     
@@ -269,8 +284,7 @@ export const catalogue = [
         couleur: "Couleur bleu profond et blanc à motifs géométriques",
         tissu: "Tissu en wax et soie getzner",
         images: {
-            img1: "../assets/man/collection_winter/catalog_mamita1.png",
-            img2: "../assets/man/collection_winter/catalog_mamita2.png"
+            img1: require('../../assets/women/catalog_mamita.png')
         }
     },
     
@@ -285,8 +299,7 @@ export const catalogue = [
         couleur: "Couleur rose corail avec imprimé contrastant",
         tissu: "Tissu en coton",
         images: {
-            img1: "../assets/man/collection_winter/catalog_sophie1.png",
-            img2: "../assets/man/collection_winter/catalog_sophie2.png"
+            img1: require('../../assets/women/catalog_sophie.png')
         }
     }
 ]

@@ -1,85 +1,18 @@
 // SearchScreen.js
 // Screen for searching products
 
-import React, { useRef } from 'react';
-import { Animated, View, Text, TextInput, TouchableOpacity, Image, Touchable } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Animated, View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+//import {MagnifyingGlassIcon} from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 import { useBasket } from '../context/BasketContext';
+import { recommendedMenItems, recommendedWomenItems } from './recommendItems';
+
 
 // Categories
 const categories = ['FEMME', 'HOMME'];
-
-// Recommended items
-const recommendedItems = [
-  {
-    id: 1,
-    nom: "SALY",
-    prix: "75 EUR",
-    titre: "Ensemble short et t-shirt",
-    coupe: "Coupe droite",
-    col: "Col en V",
-    couleur: "Blanc et multicolore",
-    tissu: "Coton premium et wax traditionnel",
-    image: require('../../assets/man/collection_afro_summer/catalog_afro_summer2.png')
-  },
-  {
-    id: 2,
-    nom: "DIAMALAYE",
-    prix: "75 EUR",
-    titre: "Ensemble chemise et short",
-    coupe: "Coupe droite",
-    col: "Chemise classique avec détails en wax",
-    couleur: "Blanc et multicolore",
-    tissu: "Coton premium et wax traditionnel",
-    image: require('../../assets/man/collection_afro_summer/catalog_diamalaye.png')
-  },
-  {
-    id: 3,
-    nom: "MEDINA",
-    prix: "75 EUR",
-    titre: "Ensemble short et débardeur",
-    coupe: "Coupe droite",
-    col: "Col rond",
-    couleur: "Blanc et multicolore",
-    tissu: "Wax et coton",
-    image: require('../../assets/man/collection_afro_summer/catalog_medina.png')
-  },
-  {
-    id: 4,
-    nom: "NIAYE",
-    prix: "75 EUR",
-    titre: "Ensemble débardeur et short",
-    coupe: "Coupe droite",
-    col: "Col rond classique avec détails en wax",
-    couleur: "Bleu pétrole et vert",
-    tissu: "Coton et wax traditionnel",
-    image: require('../../assets/man/collection_afro_summer/catalog_niaye1.png')
-  },
-  {
-    id: 5,
-    nom: "WEDDING",
-    prix: "120 EUR",
-    titre: "Ensemble spencer croisé",
-    coupe: "Coupe slim fit",
-    col: "Col Mao pochette en fleurette",
-    couleur: "Bleu acier",
-    tissu: "Fil à fil huilé",
-    image: require('../../assets/man/collection_winter/catalog_winter1.png')
-  },
-  {
-    id: 6,
-    nom: "EL PROFESSOR",
-    prix: "120 EUR",
-    titre: "Ensemble spencer et pantalon",
-    coupe: "Coupe Regular fit",
-    col: "Col Mao",
-    couleur: "Beige clair",
-    tissu: "Fil à fil huilé",
-    image: require('../../assets/man/collection_winter/catalog_elprofessor1.png')
-  },
-];
 
 const SearchScreen = () => {
   // Animated value for scroll
@@ -87,6 +20,13 @@ const SearchScreen = () => {
 
   const navigation = useNavigation();
   const { addToBasket, basketItems } = useBasket();
+
+  // Track the selected category
+  const [selectedCategory, setSelectedCategory] = useState('FEMME');
+
+  // Determine the recommended items based on the selected category
+  const recommendedItems =
+    selectedCategory === 'FEMME' ? recommendedWomenItems : recommendedMenItems;
 
   const handleAddToBasket = (item) => {
     const basketItem = {
@@ -99,7 +39,6 @@ const SearchScreen = () => {
     
     addToBasket(basketItem);
     
-    // Afficher un retour visuel (vous pouvez ajouter une animation ou un toast ici)
     console.log('Ajouté au panier:', item.nom);
   };
 
@@ -109,8 +48,11 @@ const SearchScreen = () => {
         <View className="absolute top-28 left-0 right-0 px-2 z-10 bg-transparent flex-row justify-start">
           {categories.map((cat) => (
             
-            <TouchableOpacity key={cat} onPress={() => console.log(cat + " cliqué")}>
-              <Text className="font-made-saonara text-white font-light uppercase text-sm mx-3">
+            <TouchableOpacity key={cat} onPress={() => setSelectedCategory(cat)}>
+              <Text className = "font-made-saonara text-white text-xs uppercase mt-7 mr-4 ml-4"
+                style = {
+                selectedCategory === cat ? { color: 'white'} : { color: 'gray' } // change the color of the selected category
+              }>
                 {cat}
               </Text>
             </TouchableOpacity>
@@ -130,6 +72,7 @@ const SearchScreen = () => {
 
             {/* SearchBar */}
             <View className="flex-row items-center border-b border-gray-600 mt-56 mx-4 pb-2">
+              
             <Ionicons name="search-outline" size={20} color="gray" />
             <TextInput
                 placeholder="QUE RECHERCHEZ-VOUS ?"
@@ -147,17 +90,20 @@ const SearchScreen = () => {
                 <View key={item.id} className="w-1/2 p-2">
                   <TouchableOpacity onPress={() => navigation.navigate('ProductDetails', {item})}>
                     <View className="relative">
-                      <Image source={item.image} className="w-full h-72" resizeMode="cover" />
+                      <Image source={item.images.img1} className="w-full h-72" resizeMode="cover" />
                       <TouchableOpacity 
                         className="absolute bottom-2 right-2"
-                        onPress={() => handleAddToBasket(item)}
+                        onPress={() => handleAddToBasket(item)}  // add to basket
                       >
+                        {/* Cart icon */}
                         <View className="flex-row items-center bg-white rounded-full px-3 py-2">
                           <Ionicons 
                             name="cart" 
                             size={15} 
                             color="black"
                           />
+
+                          {/* Show the quantity of the item in the basket */}
                           {basketItems.find(i => i.id === item.id) && (
                             <Text className="ml-1 text-black text-xs">
                               {basketItems.find(i => i.id === item.id).quantity}

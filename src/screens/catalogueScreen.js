@@ -1,24 +1,65 @@
 // CatalogueScreen.js
-import React from 'react';
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+// Screen for displaying the catalogue
+
+import React, {useState} from 'react';
+import { View, Text, Image, TouchableOpacity, SafeAreaView, ScrollView} from 'react-native';
+//import { catalogue } from '../data/catalogue';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+import { catalogueMan, catalogueWomen } from '../data/catalogue';
+
+// Top categories
+const topCategories = ['FEMME', 'HOMME'];
 
 const CatalogueScreen = () => {
+  const navigation = useNavigation();
+  const [selectedCategory, setSelectedCategory] = useState('FEMME');
+
+  // Determine the catalogue based on the selected category
+  const catalogue = selectedCategory === 'FEMME' ? catalogueWomen : catalogueMan;
+
+
   return (
-    <SafeAreaView style={styles.container}>
-      <View className='flex-1 bg-black  text-white'>
-        <Text> Menu </Text>
+    <SafeAreaView className="flex-1 bg-black">
+
+      {/* Categories tab */}
+      <View className='flex-row  items-center px-4 mt-10'>
+        {topCategories.map((cat) => (
+          <TouchableOpacity
+          key={cat} onPress={() => setSelectedCategory(cat)}
+          className='mr-4'>
+          <Text className='text-white text-xm uppercase font-made-saonara mt-12 ml-4'
+          style={selectedCategory === cat ? {color: 'white'} : {color: 'gray'}}>
+            {cat}
+          </Text>
+          </TouchableOpacity>
+        ))}
       </View>
-    </SafeAreaView>
+
+      {/* Catalogue */}
+      <ScrollView style = {{marginTop:65}} className='mt-2' showsVerticalScrollIndicator={false}>
+
+        {catalogue.map((item) => (
+          <TouchableOpacity
+          key={item.id}
+          onPress={() => navigation.navigate('ProductDetails', {item})}  // onpress navigate to the product details screen
+          className='flex-row justify-between px-4 mb-6'>
+
+            {/* Products ==> only the name */}
+            <View>
+              <Text className='text-white text-base font-light mb-2 ml-5'>
+                {item.nom}
+              </Text>
+
+            </View>
+  
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+  </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    backgroundColor: 'black'
-  },
-});
 
 export default CatalogueScreen;
