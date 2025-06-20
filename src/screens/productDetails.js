@@ -1,5 +1,4 @@
 // Product details screen
-// Description: Screen for displaying product details
 
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
@@ -69,13 +68,13 @@ const ProductDetails = ({ route, navigation }) => {
 
         {/* Product details */}
         <View className="px-4 mt-6">
-          <Text className="text-white text-xs mb-1">
+          <Text className="text-white text-xs mb-1 font-candy_season">
             {item.couleur || 'Noir'} | {item.nom}
           </Text>
-          <Text className="text-white text-base font-bold mb-2">
+          <Text className="text-white text-base font-bold mb-2 font-candy_season">
             {item.titre?.toUpperCase()}
           </Text>
-          <Text className="text-white text-xs mb-2">
+          <Text className="text-white text-xs mb-2 font-candy_season">
             {item.prix}
           </Text>
 
@@ -94,7 +93,7 @@ const ProductDetails = ({ route, navigation }) => {
           >
             <View className="flex-row items-center">
               <Ionicons name="cart" size={20} color="white" />
-              <Text className="text-gray-300 text-sm font-bold ml-2">Ajouter</Text>
+              <Text className="text-gray-300 text-sm font-bold ml-2 font-candy_season">Ajouter</Text>
             </View>
           </TouchableOpacity>
         </View>

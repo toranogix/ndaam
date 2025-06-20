@@ -49,7 +49,7 @@ const SearchScreen = () => {
           {categories.map((cat) => (
             
             <TouchableOpacity key={cat} onPress={() => setSelectedCategory(cat)}>
-              <Text className = "font-made-saonara text-white text-xs uppercase mt-7 mr-4 ml-4"
+              <Text className = "font-candy_season text-white text-xs uppercase mt-7 mr-4 ml-4"
                 style = {
                 selectedCategory === cat ? { color: 'white'} : { color: 'gray' } // change the color of the selected category
               }>
@@ -77,12 +77,12 @@ const SearchScreen = () => {
             <TextInput
                 placeholder="QUE RECHERCHEZ-VOUS ?"
                 placeholderTextColor="#666"
-                className="flex-1 ml-2 text-white font-made-saonara text-center text-sm"
+                className="flex-1 ml-2 text-white font-candy_season text-center text-sm"
             />
             </View>
 
             {/* Recommendation section */}
-            <Text className="font-made-saonara text-gray-300 text-left text-xs uppercase mt-28 mb-4 ml-4"> VOUS POURRIEZ ÊTRE INTÉRESSÉ PAR </Text>
+            <Text className="font-candy_season text-gray-300 text-left text-xs uppercase mt-28 mb-4 ml-4"> VOUS POURRIEZ ÊTRE INTÉRESSÉ PAR </Text>
 
             {/* Mapping recommended items */}
             <View className="flex-row flex-wrap justify-between px-4">
@@ -112,10 +112,10 @@ const SearchScreen = () => {
                         </View>
                       </TouchableOpacity>
                     </View>
-                    <Text className="font-made-saonara text-white text-xs text-center mt-2 mb-1">
+                    <Text className="font-candy_season text-white text-xs text-center mt-2 mb-1">
                       {item.nom}
                     </Text>
-                    <Text className="font-made-saonara text-white text-xs text-center mb-1">
+                    <Text className="font-candy_season text-white text-xs text-center mb-1">
                       {item.prix}
                     </Text>
                   </TouchableOpacity>

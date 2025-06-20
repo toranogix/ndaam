@@ -46,8 +46,8 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator={false}
         >
           {/* Texts */}
-          <Text className="font-made-saonara text-6xl text-black-800 font-semibold mt-20"> COLLECTION</Text>
-          <Text className="font-made-saonara text-lg mb-12 text-black-600">L'ELEGANCE AFRICAINE REINVENTEE</Text>
+          <Text className="font-candy_season text-6xl text-black-800 font-semibold mt-20"> COLLECTION</Text>
+          <Text className="font-candy_season text-lg mb-12 text-black-600">L'ELEGANCE AFRICAINE REINVENTEE</Text>
 
           {/* Images */}
           <View style={styles.imageContainer}>
@@ -66,29 +66,29 @@ const HomeScreen = () => {
             style={{ marginTop: 500 }}
             className="w-full px-4 py-8 bg-white"
             >
-              <Text className="font-made-saonara text-xl text-gray-800 font-semibold mt-12 text-center">
+              <Text className="font-candy_season text-xl text-black-800 font-semibold mt-12 text-center">
                 Notre Histoire
               </Text>
-              <Text className="font-made-saonara text-sm text-black-600 text-center mt-4">
+              <Text className="font-candy_season text-sm text-black-600 text-center mt-4">
                 NDAAM est bien plus qu'une marque de mode : c'est une rencontre entre héritage et modernité, une célébration du savoir-faire africain revisité pour une élégance intemporelle.
               </Text>
-              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              <Text className="font-candy_season text-sm text-black-600 text-center mt-2">
                 Inspirée des traditions artisanales du continent, NDAAM crée des pièces uniques qui mêlent techniques ancestrales et design contemporain. Chaque collection est une invitation à découvrir l'histoire et la richesse culturelle de l'Afrique, à travers des créations qui allient authenticité et innovations contemporaines.
               </Text>
-              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              <Text className="font-candy_season text-sm text-black-600 text-center mt-2">
                 Chaque création porte en elle une histoire, un fragment d'identité qui transcende les tendances pour offrir un style authentique et affirmé.
               </Text>
-              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              <Text className="font-candy_season text-sm text-black-600 text-center mt-2">
                 Son nom vient du village de NDAAM LO, en plein coeur du Sénégal dans la région de Thiès, un lieu chargé de sens qui incarne les valeurs de la marque : transmission, excellence et fierté culturelle.
               </Text>
-              <Text className="font-made-saonara text-sm text-black-600 text-center mt-2">
+              <Text className="font-candy_season text-sm text-black-600 text-center mt-2">
                 Chez NDAAM, nous croyons que la mode doit avoir du sens. C'est pourquoi nous avons fait le choix d'une production sur mesure qui limite le gaspillage et valorise une consommation plus réfléchie.
               </Text>
           </Animatable.View>
 
           {/* Copyrights */}
           <View style={styles.copyRights}>
-            <Text className="font-made-saonara text-xs text-black-600 mt-20">© 2025 NDAAM. Tous droits réservés.</Text>
+            <Text className="font-candy_season text-sm text-black-600 mt-20">© 2025 NDAAM. Tous droits réservés.</Text>
           </View>
         </ScrollView>
       </View>

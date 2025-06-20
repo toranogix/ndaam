@@ -18,9 +18,9 @@ const BasketItem = ({ item, onIncrement, onDecrement }) => (
 
     <View className="flex-1 ml-4 justify-between">
       <View>
-        <Text className="font-made-saonara text-white text-xs">{item.nom}</Text>
-        <Text className="font-made-saonara text-white text-xs mt-1">{item.titre}</Text>
-        <Text className="font-made-saonara text-white text-xs mt-2">{item.prix}</Text>
+        <Text className="font-candy_season text-white text-xs">{item.nom}</Text>
+        <Text className="font-candy_season text-white text-xs mt-1">{item.titre}</Text>
+        <Text className="font-candy_season text-white text-xs mt-2">{item.prix}</Text>
       </View>
       <View className="flex-row items-center mt-2">
         {/*// Decrement button*/}
@@ -67,9 +67,7 @@ const BasketScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-black">
-      {/* Test font loading */}
-      <Text style={styles.testFont}>Test Custom Font</Text>
-      
+
       {/* Close button */}
       <View className="flex-row justify-between">
         <TouchableOpacity 
@@ -83,13 +81,13 @@ const BasketScreen = () => {
       {/* Title */}
       <View className="absolute top-12 left-0 right-0 px-2 z-10 bg-transparent flex-row justify-start">
         <TouchableOpacity onPress={() => setActiveTab('basket')}>
-          <Text className="font-made-saonara text-white mt-20 mx-3" style={{fontSize: 12}}>
+          <Text className="font-candy_season text-white mt-20 mx-3" style={{fontSize: 12}}>
             PANIER ({basketItems.length})
           </Text>
         </TouchableOpacity>
         <TouchableOpacity>
           <View className="flex-row items-center mt-20 mx-3">
-            <Text className="font-made-saonara text-white mr-1" style={{fontSize: 12}}>
+            <Text className="font-candy_season text-white mr-1" style={{fontSize: 12}}>
               FAVORIS
             </Text>
             <Ionicons name="heart-outline" size={15} color="rgba(255,255,255,0.75)" />
@@ -117,18 +115,18 @@ const BasketScreen = () => {
       {basketItems.length > 0 ? (
         <View className="p-4 border-t border-gray-800">
           <View className="flex-row justify-between mb-4">
-            <Text className="font-made-saonara text-white text-xs">TOTAL</Text>
-            <Text className="font-made-saonara text-white text-xs">{totalAmount.toFixed(2)} EURO</Text>
+            <Text className="font-candy_season text-white text-xs">TOTAL</Text>
+            <Text className="font-candy_season text-white text-xs">{totalAmount.toFixed(2)} EURO</Text>
           </View>
-          <TouchableOpacity className="bg-white py-4 items-center">
-            <Text className="font-made-saonara text-black text-xs tracking-wider">
+          <TouchableOpacity className="bg-white py-4 items-center font-candy_season mb-11">
+            <Text className="font-candy_season text-black text-xs tracking-wider">
               PASSER LA COMMANDE
             </Text>
           </TouchableOpacity>
         </View>
       ) : (  // If the basket is empty
-        <View className="mx-10 p-4 items-center justify-center flex-1">
-          <Text className="font-made-saonara text-white text-sm">
+        <View className="mx-10 p-4 items-center justify-start flex-1">
+          <Text className="font-candy_season text-white text-sm">
             VOTRE PANIER EST VIDE
           </Text>
         </View>
@@ -139,7 +137,7 @@ const BasketScreen = () => {
 
 const styles = StyleSheet.create({
   testFont: {
-    fontFamily: 'made-saonara',
+    fontFamily: 'candy_season',
     color: 'white',
     fontSize: 18,
     textAlign: 'center',

@@ -179,7 +179,7 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
                   {options.tabBarIcon({ 
                     focused: isFocused, 
                     color: isFocused ? colors.iconActiveColor : colors.iconInactiveColor, 
-                    size: 26 
+                    size: 20 
                   })}
                 </Animated.View>
               </TouchableOpacity>
@@ -300,7 +300,7 @@ export default function App() {
     async function loadFonts() {
       try {
         await Font.loadAsync({
-          'made-saonara': require('./assets/font/made_saerona.otf'),
+          'candy_season': require('./assets/font/candy_season.otf'),
         });
         setFontsLoaded(true);
       } catch (error) {

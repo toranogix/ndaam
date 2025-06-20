@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'made-saonara': ['made-saonara', 'sans-serif'],
+        'candy_season': ['candy_season', 'sans-serif'],
       },
     },
   },

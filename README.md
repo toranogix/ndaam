@@ -17,7 +17,7 @@ NDAAM is a modern mobile application showcasing an elegant collection of African
 ### **Color Palette**
 - **Dark background** : Elegant black (#000000)
 - **Accents** : White and gray for contrast
-- **Typography** : Custom "made-saonara" font made by Zara
+- **Typography** : Custom "Candy Season" font
 
 
 ## 🛠️ Technologies Used
@@ -60,7 +60,7 @@ npx expo start
 ```
 
 ### **Font Configuration**
-The application uses the custom "made-saonara" font made by Zara. Make sure font files are properly configured in the `assets/fonts/` folder
+The application uses the custom "Candy Season" font. Make sure font files are properly configured in the `assets/fonts/` folder
 
 ## 📱 Project Structure
 

@@ -1,9 +1,7 @@
 // CatalogueScreen.js
-// Screen for displaying the catalogue
 
 import React, {useState} from 'react';
 import { View, Text, Image, TouchableOpacity, SafeAreaView, ScrollView} from 'react-native';
-//import { catalogue } from '../data/catalogue';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { catalogueMan, catalogueWomen } from '../data/catalogue';
@@ -28,7 +26,7 @@ const CatalogueScreen = () => {
           <TouchableOpacity
           key={cat} onPress={() => setSelectedCategory(cat)}
           className='mr-4'>
-          <Text className='text-white text-xm uppercase font-made-saonara mt-12 ml-4'
+          <Text className='text-white text-xm uppercase font-candy_season mt-12 ml-4'
           style={selectedCategory === cat ? {color: 'white'} : {color: 'gray'}}>
             {cat}
           </Text>
@@ -47,7 +45,7 @@ const CatalogueScreen = () => {
 
             {/* Products ==> only the name */}
             <View>
-              <Text className='text-white text-base font-light mb-2 ml-5'>
+              <Text className='text-white text-base font-light mb-2 ml-5 font-candy_season'>
                 {item.nom}
               </Text>
 
