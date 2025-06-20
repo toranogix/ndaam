@@ -14,14 +14,14 @@ import CatalogueScreen from './src/screens/catalogueScreen';
 import BasketScreen from './src/screens/basketScreen';
 import ProfileScreen from './src/screens/profileScreen';
 import ProductDetails from './src/screens/productDetails';
-import { BasketProvider } from './src/context/BasketContext';
+import { BasketProvider, useBasket } from './src/context/BasketContext';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 // Test with liquid glass effect ios 25 
 // Animated tab bar
-const CustomTabBar = ({ state, descriptors, navigation }) => {
+const CustomTabBar = ({ state, descriptors, navigation, basketCount }) => {
   const animatedValues = useRef(
     state.routes.map(() => new Animated.Value(0))
   ).current;
@@ -136,6 +136,9 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
             outputRange: [0, -8],
           });
 
+          const isCart = route.name === 'Panier';
+          const cartItemCount = basketCount;
+
           return (
             <View key={route.key} style={styles.tabItem}>
               <TouchableOpacity
@@ -181,6 +184,11 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
                     color: isFocused ? colors.iconActiveColor : colors.iconInactiveColor, 
                     size: 20 
                   })}
+                  {isCart && cartItemCount > 0 && (
+                    <View style={styles.badgeContainer}>
+                      <Text style={styles.badgeText}>{cartItemCount}</Text>
+                    </View>
+                  )}
                 </Animated.View>
               </TouchableOpacity>
             </View>
@@ -193,9 +201,17 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
 
 // Function to display the tabs
 function Tabs() {
+  const { basketItems } = useBasket();
+
+  // Calculate the total number of items by summing their quantities
+  const totalItemCount = basketItems.reduce(
+    (total, item) => total + (item.quantity || 0),
+    0
+  );
+
   return (
     <Tab.Navigator
-      tabBar={props => <CustomTabBar {...props} />}
+      tabBar={props => <CustomTabBar {...props} basketCount={totalItemCount} />}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
@@ -290,6 +306,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 40,
     height: 20,
+  },
+  badgeContainer: {
+    position: 'absolute',
+    top: -5,
+    right: -10,
+    backgroundColor: '#FF3B30', // iOS red color
+    borderRadius: 10,
+    minWidth: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 5,
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.5)',
+  },
+  badgeText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: 'bold',
   },
 });
 
