@@ -33,6 +33,7 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
   const getColorsForRoute = (routeName) => {
     switch (routeName) {
       case 'Accueil':
+      case 'Profil':
         // if White background ===> we use dark colors for visibility
         return {
           blurIntensity: 30,
@@ -46,7 +47,6 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
       case 'Recherche':
       case 'Menu':
       case 'Panier':
-      case 'Profil':
         // if Dark background ===> we use light colors
         return {
           blurIntensity: 25,
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: 80,
+    height: 60,
     paddingBottom: Platform.OS === 'ios' ? 20 : 10,
   },
   blurContainer: {
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    borderRadius: 30,
+    borderRadius: 15,
     overflow: 'hidden',
   },
   activeGradient: {
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 40,
-    height: 40,
+    height: 20,
   },
 });
 

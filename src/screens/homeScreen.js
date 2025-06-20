@@ -35,6 +35,7 @@ const HomeScreen = () => {
   }, [translateY]);
 
   return (
+    
     <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={{ flex: 1 }}>
         {/* Logo */}
@@ -100,11 +101,11 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   logoOverlay: {
     position: 'absolute',
-    top: 50,
+    top: 10,
     left: 0,
     right: 0,
     width: '100%',
-    height: 120,
+    height: 145,
     zIndex: 20,
   },
   imageContainer: {

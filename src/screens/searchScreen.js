@@ -1,5 +1,4 @@
 // SearchScreen.js
-// Screen for searching products
 
 import React, { useRef, useState } from 'react';
 import { Animated, View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
@@ -34,7 +33,7 @@ const SearchScreen = () => {
       nom: item.nom,
       prix: item.prix,
       titre: item.titre,
-      images: item.image
+      images: item.images.img1 // Use the first image from the images object
     };
     
     addToBasket(basketItem);

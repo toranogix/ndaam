@@ -11,9 +11,9 @@ import { useBasket } from '../context/BasketContext';
 const BasketItem = ({ item, onIncrement, onDecrement }) => (
   <View className="flex-row p-4 border-b border-gray-800">
     <Image 
-      source={typeof item.images === 'string' ? { uri: item.images } : item.images}
+      source={item.images}
       className="w-24 h-36"
-      style={{ resizeMode: 'contain' }}
+      style={{ resizeMode: 'cover' }}
     />
 
     <View className="flex-1 ml-4 justify-between">
@@ -32,7 +32,6 @@ const BasketItem = ({ item, onIncrement, onDecrement }) => (
         </TouchableOpacity>
 
         {/*// Increment button*/}
-
         <Text className="text-white mx-4">{item.quantity}</Text>
         <TouchableOpacity 
           className="w-8 h-8 border border-gray-400 items-center justify-center"
@@ -67,16 +66,25 @@ const BasketScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-black">
-
       {/* Close button */}
-      <View className="flex-row justify-between">
-        <TouchableOpacity 
-          className="absolute top-5 left-5 z-10"
-          onPress={() => navigation.navigate('Tabs')}// go back to previous screen
-        >
-          <Ionicons name="close" size={22} color="rgba(255,255,255,0.75)" />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity 
+        className="absolute top-12 left-4 z-50"
+        onPress={() => navigation.navigate('Recherche')} // on click go back to search screen
+        activeOpacity={0.7}
+        style={{ 
+          padding: 8,
+          backgroundColor: 'rgba(0,0,0,0.3)',
+          borderRadius: 20,
+          width: 40,
+          height: 40,
+          marginTop: 15,
+          marginRight: 15,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Ionicons name="close" size={20} color="white" />
+      </TouchableOpacity>
 
       {/* Title */}
       <View className="absolute top-12 left-0 right-0 px-2 z-10 bg-transparent flex-row justify-start">
@@ -92,7 +100,6 @@ const BasketScreen = () => {
             </Text>
             <Ionicons name="heart-outline" size={15} color="rgba(255,255,255,0.75)" />
           </View>
-
         </TouchableOpacity>
       </View>
 
