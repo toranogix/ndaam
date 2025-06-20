@@ -1,6 +1,6 @@
 # NDAAM - African Elegance Reinvented
 
-![NDAAM Logo](assets/texte_logo_ndam.png)
+![NDAAM Logo](assets/logo_ndam2.png)
 
 ## 📱 African Fashion Mobile Application
 
