@@ -6,7 +6,11 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'made-saonara': ['made-saonara', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

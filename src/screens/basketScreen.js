@@ -67,6 +67,9 @@ const BasketScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-black">
+      {/* Test font loading */}
+      <Text style={styles.testFont}>Test Custom Font</Text>
+      
       {/* Close button */}
       <View className="flex-row justify-between">
         <TouchableOpacity 
@@ -134,5 +137,14 @@ const BasketScreen = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  testFont: {
+    fontFamily: 'made-saonara',
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center',
+    marginTop: 50,
+  },
+});
 
 export default BasketScreen;

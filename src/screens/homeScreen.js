@@ -46,8 +46,8 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator={false}
         >
           {/* Texts */}
-          <Text className="font-made-saonara text-4xl text-gray-800 font-semibold mt-20"> COLLECTION</Text>
-          <Text className="font-made-saonara text-sm mb-12 text-gray-600">L'ELEGANCE AFRICAINE REINVENTEE</Text>
+          <Text className="font-made-saonara text-6xl text-black-800 font-semibold mt-20"> COLLECTION</Text>
+          <Text className="font-made-saonara text-lg mb-12 text-black-600">L'ELEGANCE AFRICAINE REINVENTEE</Text>
 
           {/* Images */}
           <View style={styles.imageContainer}>

@@ -6,6 +6,7 @@ import { View, StyleSheet, Platform, TouchableOpacity, Text, Animated } from 're
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import * as Font from 'expo-font';
 import "./global.css"
 import HomeScreen from './src/screens/homeScreen';
 import SearchScreen from './src/screens/searchScreen';
@@ -14,8 +15,6 @@ import BasketScreen from './src/screens/basketScreen';
 import ProfileScreen from './src/screens/profileScreen';
 import ProductDetails from './src/screens/productDetails';
 import { BasketProvider } from './src/context/BasketContext';
-
-
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -295,6 +294,32 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    async function loadFonts() {
+      try {
+        await Font.loadAsync({
+          'made-saonara': require('./assets/font/made_saerona.otf'),
+        });
+        setFontsLoaded(true);
+      } catch (error) {
+        console.error('Error loading fonts:', error);
+        setFontsLoaded(true); // Continue without custom font
+      }
+    }
+
+    loadFonts();
+  }, []);
+
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black' }}>
+        <Text style={{ color: 'white', fontSize: 16 }}>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <BasketProvider>
       <NavigationContainer>
