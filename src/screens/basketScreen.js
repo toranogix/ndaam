@@ -93,7 +93,7 @@ const BasketScreen = () => {
             PANIER ({basketItems.length})
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Favorites')}>
           <View className="flex-row items-center mt-20 mx-3">
             <Text className="font-candy_season text-white mr-1" style={{fontSize: 12}}>
               FAVORIS

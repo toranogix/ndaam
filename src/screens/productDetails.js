@@ -4,37 +4,48 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useFavorites } from '../context/FavoritesContext';
 
 const ProductDetails = ({ route, navigation }) => {
   const { item } = route.params;
+  const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
+  const favorite = isFavorite(item.id);
+
+  const handleToggleFavorite = () => {
+    if (favorite) {
+      removeFromFavorites(item.id);
+    } else {
+      addToFavorites(item);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-black">
-      <View className="flex-row justify-between">
+      <View className="flex-row justify-between items-center px-4 pt-2">
         {/* Close button */}
         <TouchableOpacity
-          className="absolute top-2 left-5 z-10"
-        onPress={() => navigation.goBack()} // back to the previous screen
-      >
-        <Ionicons name="close" size={24} color = "rgba(255,255,255,0.75)" />
-      </TouchableOpacity>
+          className="p-2"
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="close" size={24} color="rgba(255,255,255,0.75)" />
+        </TouchableOpacity>
 
-      {/* Share button */}
-      <TouchableOpacity
-        className="absolute top-2 right-5 z-10"
-        onPress={() => console.log('Produit partagé')} // share the product
-      >
-        <Ionicons name = "share-social" size={20} color = "rgba(255,255,255,0.75)"   />
-      </TouchableOpacity>
-
-      {/* Add to favorites button */}
-      <TouchableOpacity
-        className="absolute top-2 z-10"
-        style={{ marginLeft: 320 }}
-        onPress={() => console.log('Produit ajouté aux favoris')} // add to favorites
-      >
-        <Ionicons name="heart-outline" size={20} color="rgba(255,255,255,0.75)" />
-      </TouchableOpacity>
+        <View className="flex-row">
+          {/* Add to favorites button */}
+          <TouchableOpacity
+            className="p-2"
+            onPress={handleToggleFavorite}
+          >
+            <Ionicons name={favorite ? "heart" : "heart-outline"} size={24} color={favorite ? "#EF4444" : "rgba(255,255,255,0.75)"} />
+          </TouchableOpacity>
+          {/* Share button */}
+          <TouchableOpacity
+            className="p-2"
+            onPress={() => console.log('Produit partagé')}
+          >
+            <Ionicons name="share-social" size={24} color="rgba(255,255,255,0.75)" />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Scrollable content */}

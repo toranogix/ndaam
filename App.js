@@ -15,6 +15,8 @@ import BasketScreen from './src/screens/basketScreen';
 import ProfileScreen from './src/screens/profileScreen';
 import ProductDetails from './src/screens/productDetails';
 import { BasketProvider, useBasket } from './src/context/BasketContext';
+import { FavoritesProvider } from './src/context/FavoritesContext';
+import FavoritesScreen from './src/screens/favoritesScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -356,15 +358,18 @@ export default function App() {
   }
 
   return (
-    <BasketProvider>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Tabs" component={Tabs} />
-          <Stack.Screen name="ProductDetails" component={ProductDetails} />
-          <Stack.Screen name="Basket" component={BasketScreen} />
-          <Stack.Screen name="Catalogue" component={CatalogueScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </BasketProvider>
+    <FavoritesProvider>
+      <BasketProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Tabs" component={Tabs} />
+            <Stack.Screen name="ProductDetails" component={ProductDetails} />
+            <Stack.Screen name="Basket" component={BasketScreen} />
+            <Stack.Screen name="Catalogue" component={CatalogueScreen} />
+            <Stack.Screen name="Favorites" component={FavoritesScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </BasketProvider>
+    </FavoritesProvider>
   );
 }
