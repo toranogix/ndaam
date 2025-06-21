@@ -89,7 +89,7 @@ ndaam/
 ## 🎯 Upcoming Features
 
 - [ ] Authentication system
-- [ ] Favorites management
+- [V] Favorites management
 - [ ] Payment system
 - [ ] Push notifications
 - [ ] Offline mode
